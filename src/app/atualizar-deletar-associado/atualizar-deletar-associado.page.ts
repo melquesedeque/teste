@@ -4,6 +4,7 @@ import { AssociadosService } from '../services/associados.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Associados } from '../models/associados';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-atualizar-deletar-associado',
@@ -13,12 +14,15 @@ import { Associados } from '../models/associados';
 export class AtualizarDeletarAssociadoPage implements OnInit {
 
   foto:string = "../../assets/img/foto.png";
-  associado:Associados;
+  associado:Associados = new Associados;
   constructor(private rota:Router,private menu:MenuController,private pegarId:ActivatedRoute,private associadoService:AssociadosService,private msgAlerta:AlertController,private camera:Camera) {}
 
   ionViewWillEnter() {
     this.menu.enable(true);
-    let id = this.pegarId.snapshot.params['id'];
+    let user = firebase.auth().currentUser;
+    this.associadoService.buscarAssociadoPorEmail(user.email).then(resultado =>{
+      this.associado = resultado;
+    });
   }
 
   ngOnInit() {
@@ -27,7 +31,8 @@ export class AtualizarDeletarAssociadoPage implements OnInit {
   editar(){
     try {
       this.associado.imagem = this.foto;
-      this.rota.navigateByUrl('/listar-associados');
+      this.associadoService.editar(this.associado);
+      alert("Anuncio Atualizado com Sucesso!");
     } catch (error) {
       alert('Erro é '+error);
     }

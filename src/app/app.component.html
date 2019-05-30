@@ -15,7 +15,7 @@
           <!-- <ion-item [routerLink]="['/listar-associados']">
               <ion-icon slot="start" name="list"></ion-icon> Lista dos Associados
             </ion-item> -->
-          <ion-item [routerLink]="['/cadastro-funcionario']" *ngIf="usuarioAssociado">
+          <ion-item [routerLink]="['/atualizar-associado']" *ngIf="usuarioAssociado">
             <ion-icon slot="start" name="person-add"></ion-icon> Configurar Anúncio
           </ion-item>
           <ion-item [routerLink]="['']" *ngIf="usuarioAssociado">

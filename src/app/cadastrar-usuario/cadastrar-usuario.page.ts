@@ -77,11 +77,11 @@ export class CadastrarUsuarioPage implements OnInit {
       associado.descricao = "";
       associado.especializacao = "";
       associado.horario = "";
-      associado.imagem = "";
+      associado.imagem = "../../assets/img/foto.png";
       associado.sexo = "";
       associado.telefone = "";
       associado.tipoPlano = "";
-      associado.contaAtiva = "false";
+      associado.contaAtiva = false;
       associado.tipo = tipoUsuario;
 
       try {

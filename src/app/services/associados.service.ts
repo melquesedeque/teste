@@ -33,7 +33,7 @@ export class AssociadosService{
   }
 
   async buscarTodoAssociados(): Promise<Associados[]> {
-    return this.db.orderByChild('contaAtiva').equalTo("true").once('value').then(snapshot => {
+    return this.db.orderByChild('contaAtiva').equalTo(true).once('value').then(snapshot => {
       let associados = [];
       snapshot.forEach(associado => {
         associados.push(associado.val());

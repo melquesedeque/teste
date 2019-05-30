@@ -10,7 +10,7 @@
 
 <ion-content padding>
 
-  <h1>Editar Associado</h1>
+  <h1>Configuração do Anúncio</h1>
 
   <ion-list>
     <ion-item>
@@ -31,16 +31,31 @@
       </ion-radio-group>
     </ion-item>
     <ion-item>
-      <ion-label class="label">Função:</ion-label>
-      <ion-input class="label" [(ngModel)]="associado.funcao"></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-label class="label">Horario:</ion-label>
       <ion-input class="label" [(ngModel)]="associado.horario"></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label class="label">Especializaçao:</ion-label>
+      <ion-input class="label" [(ngModel)]="associado.especializacao"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label class="label">Descrição:</ion-label>
       <ion-input class="label" [(ngModel)]="associado.descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label">Telefone:</ion-label>
+      <ion-input class="label" [(ngModel)]="associado.telefone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Opções de Planos</ion-label>
+      <ion-select placeholder="Selecione o Plano" [(ngModel)]="associado.tipoPlano"> 
+        <ion-select-option value="mensal">Mensal R$ 15,00</ion-select-option>
+        <ion-select-option value="anual">Anual R$ 150,00</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ativar Conta</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="associado.contaAtiva"></ion-toggle>
     </ion-item>
     <div id="fotoDiv" (click)="tiraFoto()">
       <ion-img id="foto" [src]="foto"></ion-img>

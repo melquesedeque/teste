@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'cadastro-funcionario', canActivate:[AutenticarLoginGuard], loadChildren: './cadastro-funcionario/cadastro-funcionario.module#CadastroFuncionarioPageModule' },
   { path: 'listar-associados/:id', canActivate:[AutenticarLoginGuard],loadChildren: './listar-associados/listar-associados.module#ListarAssociadosPageModule' },
   { path: 'cadastrar-usuario', loadChildren: './cadastrar-usuario/cadastrar-usuario.module#CadastrarUsuarioPageModule' },
-  { path: 'atualizar-associado/:id', canActivate:[AutenticarLoginGuard],loadChildren: './atualizar-deletar-associado/atualizar-deletar-associado.module#AtualizarDeletarAssociadoPageModule' },
+  { path: 'atualizar-associado', canActivate:[AutenticarLoginGuard],loadChildren: './atualizar-deletar-associado/atualizar-deletar-associado.module#AtualizarDeletarAssociadoPageModule' },
   { path: 'informacao/:id', loadChildren: './mais-informacao/mais-informacao.module#MaisInformacaoPageModule' },
   { path: 'minhaconta', canActivate:[AutenticarLoginGuard], loadChildren: './minhaconta/minhaconta.module#MinhacontaPageModule' }
 ];

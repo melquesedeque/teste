@@ -11,12 +11,15 @@ import { Associados } from '../models/associados';
 })
 export class MaisInformacaoPage implements OnInit {
 
-  associado:Associados;
+  associado:Associados = new Associados;
   constructor(private alert:AlertController ,private menu:MenuController, private rotas:Router, private pegarId:ActivatedRoute, private associadosService:AssociadosService) {}
 
   ionViewWillEnter() {
     this.menu.enable(true);
     let idAssociado = this.pegarId.snapshot.params['id'];
+    this.associadosService.buscarPorId(idAssociado).then(resultado =>{
+      this.associado = resultado;
+    });
   }
 
   async comprar() {

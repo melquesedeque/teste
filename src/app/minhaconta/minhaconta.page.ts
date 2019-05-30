@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AutenticarLoginGuard } from '../autenticar-login.guard';
 import { UsuarioService } from '../services/usuario.service';
 import { Usuarios } from '../models/usuarios';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-minhaconta',
@@ -10,11 +10,14 @@ import { Usuarios } from '../models/usuarios';
 })
 export class MinhacontaPage implements OnInit {
 
-  usuario:Usuarios;
+  usuario:Usuarios = new Usuarios;
   constructor(private usuarioService:UsuarioService) { }
 
   ionViewWillEnter(){
-    let id = AutenticarLoginGuard.id;
+    let user = firebase.auth().currentUser;
+    this.usuarioService.buscarEmail(user.email).then(resultado =>{
+      this.usuario = resultado;
+    }).catch(erro => alert(`OLha ${erro}`));
   }
 
   ngOnInit() {
