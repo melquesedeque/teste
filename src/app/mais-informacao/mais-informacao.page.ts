@@ -3,6 +3,7 @@ import { MenuController, AlertController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AssociadosService } from '../services/associados.service';
 import { Associados } from '../models/associados';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-mais-informacao',
@@ -12,7 +13,7 @@ import { Associados } from '../models/associados';
 export class MaisInformacaoPage implements OnInit {
 
   associado:Associados = new Associados;
-  constructor(private alert:AlertController ,private menu:MenuController, private rotas:Router, private pegarId:ActivatedRoute, private associadosService:AssociadosService) {}
+  constructor(private ligarAssociado:CallNumber, private alert:AlertController ,private menu:MenuController, private rotas:Router, private pegarId:ActivatedRoute, private associadosService:AssociadosService) {}
 
   ionViewWillEnter() {
     this.menu.enable(true);
@@ -23,15 +24,7 @@ export class MaisInformacaoPage implements OnInit {
   }
 
   async comprar() {
-    const alert = await this.alert.create({
-      header: 'Atenção!',
-      message: 'Deseja Contratar este profissional?',
-      buttons: [{text:'Cancelar'},{text:'Comprar', handler: () =>{
-        this.rotas.navigateByUrl('/lista-funcionarios');
-      } }]
-    });
-  
-    await alert.present();
+    this.ligarAssociado.callNumber(this.associado.telefone, true).then(res => console.log('Launched dialer!', res)).catch(err => alert('Error launching dialer ' + err));
   }
 
   ngOnInit() { }

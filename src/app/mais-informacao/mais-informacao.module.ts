@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { MaisInformacaoPage } from './mais-informacao.page';
 import { ServicesModule } from '../services/services.module';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ServicesModule
   ],
-  declarations: [MaisInformacaoPage]
+  declarations: [MaisInformacaoPage],
+  providers:[CallNumber]
 })
 export class MaisInformacaoPageModule {}
