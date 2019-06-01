@@ -18,9 +18,9 @@
           <ion-item [routerLink]="['/atualizar-associado']" *ngIf="usuarioAssociado">
             <ion-icon slot="start" name="person-add"></ion-icon> Configurar Anúncio
           </ion-item>
-          <ion-item [routerLink]="['']" *ngIf="usuarioAssociado">
+          <!-- <ion-item [routerLink]="['']" *ngIf="usuarioAssociado">
             <ion-icon slot="start" name="copy"></ion-icon> Contratos
-          </ion-item>
+          </ion-item> -->
           <ion-item [routerLink]="['/minhaconta']" *ngIf="!usuarioAssociado">
             <ion-icon slot="start" name="people"></ion-icon> Minha Conta
           </ion-item>

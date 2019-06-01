@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "530436378946",
+    "firebase_url": "https://projegoricardao.firebaseio.com",
+    "project_id": "projegoricardao",
+    "storage_bucket": "projegoricardao.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:530436378946:android:e01208a363dfee86",
+        "android_client_info": {
+          "package_name": "br.com.chamaricadao"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "530436378946-hlj0rojudnq9ovhn4l48r0u87ebul0js.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrO9C6R1ZkFaYT4FTuMLo5oHhl_YcJ8sM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "530436378946-hlj0rojudnq9ovhn4l48r0u87ebul0js.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
