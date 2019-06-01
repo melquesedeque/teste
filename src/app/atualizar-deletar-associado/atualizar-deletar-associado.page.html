@@ -12,6 +12,17 @@
 
   <h1>Configuração do Anúncio</h1>
 
+  <ion-row>
+    <ion-col>
+      <h3>
+        Dados Pessoais
+      </h3>
+    </ion-col>
+  </ion-row>
+
+  <div id="fotoDiv" (click)="tiraFoto()">
+    <ion-img id="foto" [src]="foto"></ion-img>
+  </div>
   <ion-list>
     <ion-item>
       <ion-label class="label">Nome:</ion-label>
@@ -30,6 +41,15 @@
         </ion-item>
       </ion-radio-group>
     </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <h3>
+          Dados Profissionais
+          <ion-spinner name="Profissionais"></ion-spinner>
+        </h3>
+      </ion-col>
+    </ion-row>
     <ion-item>
       <ion-label class="label">Horario:</ion-label>
       <ion-input class="label" [(ngModel)]="associado.horario"></ion-input>
@@ -44,22 +64,48 @@
     </ion-item>
     <ion-item>
       <ion-label class="label">Telefone:</ion-label>
-      <ion-input class="label" [(ngModel)]="associado.telefone"></ion-input>
+      <ion-input id="tel" class="label" [(ngModel)]="associado.telefone" maxlength="11"></ion-input>
     </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <h3>
+          Forma de Pagamento
+          <ion-spinner name="Pagamento"></ion-spinner>
+        </h3>
+      </ion-col>
+    </ion-row>
+
     <ion-item>
       <ion-label>Opções de Planos</ion-label>
-      <ion-select placeholder="Selecione o Plano" [(ngModel)]="associado.tipoPlano"> 
+      <ion-select placeholder="Selecione o Plano" [(ngModel)]="associado.tipoPlano">
         <ion-select-option value="mensal">Mensal R$ 15,00</ion-select-option>
         <ion-select-option value="anual">Anual R$ 150,00</ion-select-option>
       </ion-select>
     </ion-item>
+
+    <ion-item>
+      <ion-label>Número do Cartão</ion-label>
+      <ion-input class="label" [(ngModel)]="associado.numeroCartao" maxlength="19"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Código de Segurança</ion-label>
+      <ion-input class="label" [(ngModel)]="associado.codigoCartao" maxlength="3"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <h3>
+          Ativar Conta
+          <ion-spinner name="Conta"></ion-spinner>
+        </h3>
+      </ion-col>
+    </ion-row>
+
     <ion-item>
       <ion-label>Ativar Conta</ion-label>
       <ion-toggle slot="end" [(ngModel)]="associado.contaAtiva"></ion-toggle>
     </ion-item>
-    <div id="fotoDiv" (click)="tiraFoto()">
-      <ion-img id="foto" [src]="foto"></ion-img>
-    </div>
   </ion-list>
 
   <ion-button expand="full" shape="round" color="warning" (click)="editarAssociado()">

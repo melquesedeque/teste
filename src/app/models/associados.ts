@@ -9,6 +9,8 @@ export class Associados {
                 public email?:string,
                 public tipoPlano?:string,
                 public tipo?:string,
+                public numeroCartao?:string,
+                public codigoCartao?:string,
                 public contaAtiva?:boolean,
                 public imagem?:string){}
 }
