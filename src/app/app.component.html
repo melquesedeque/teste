@@ -24,7 +24,7 @@
           <ion-item [routerLink]="['/minhaconta']" *ngIf="!usuarioAssociado">
             <ion-icon slot="start" name="people"></ion-icon> Minha Conta
           </ion-item>
-          <ion-item [routerLink]="['']" *ngIf="!usuarioAssociado">
+          <ion-item *ngIf="!usuarioAssociado">
             <ion-icon slot="start" name="star"></ion-icon> Favoritos
           </ion-item>
           <!-- <ion-item [routerLink]="['/login']">

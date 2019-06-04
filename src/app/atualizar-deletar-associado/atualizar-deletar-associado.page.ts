@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, AlertController } from '@ionic/angular';
+import { MenuController, AlertController, LoadingController } from '@ionic/angular';
 import { AssociadosService } from '../services/associados.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,9 +15,12 @@ export class AtualizarDeletarAssociadoPage implements OnInit {
 
   foto: string = "../../assets/img/foto.png";
   associado: Associados = new Associados;
-  constructor(private rota: Router, private menu: MenuController, private pegarId: ActivatedRoute, private associadoService: AssociadosService, private msgAlerta: AlertController, private camera: Camera) { }
+  msn;
+  carregando;
+  constructor(private loadingController: LoadingController, private rota: Router, private menu: MenuController, private pegarId: ActivatedRoute, private associadoService: AssociadosService, private msgAlerta: AlertController, private camera: Camera) { }
 
   ionViewWillEnter() {
+    this.loading();
     this.menu.enable(true);
     let user = firebase.auth().currentUser;
     this.associadoService.buscarAssociadoPorEmail(user.email).then(resultado => {
@@ -26,10 +29,17 @@ export class AtualizarDeletarAssociadoPage implements OnInit {
       if (Associados != null) {
         if (this.associado.telefone.length >= 11) {
           this.associado.telefone = this.associado.telefone.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
-          console.log(this.associado.telefone);
         }
       }
+      this.carregando.dismiss();
     });
+  }
+
+  async loading() {
+    this.carregando = await this.loadingController.create({
+      message: 'Carregando...',
+    });
+    this.carregando.present();
   }
 
   ngOnInit() {
@@ -37,9 +47,21 @@ export class AtualizarDeletarAssociadoPage implements OnInit {
 
   editar() {
     try {
-      this.associado.imagem = this.foto;
-      this.associadoService.editar(this.associado);
-      alert("Anuncio Atualizado com Sucesso!");
+      if (this.associado.contaAtiva == true) {
+        if (this.associado.numeroCartao.length == 19 && this.associado.codigoCartao.length == 3) {
+          this.associado.imagem = this.foto;
+          this.associadoService.editar(this.associado);
+          this.msn = "";
+          alert("Anuncio Atualizado com Sucesso!");
+        } else {
+          this.msn = "Preencha a os campos 'Numero do Cartão' e o 'Código' Devidamente!";
+        }
+      } else {
+        this.associado.imagem = this.foto;
+        this.associadoService.editar(this.associado);
+        this.msn = "";
+        alert("Anuncio Atualizado com Sucesso!");
+      }
     } catch (error) {
       alert('Erro é ' + error);
     }
